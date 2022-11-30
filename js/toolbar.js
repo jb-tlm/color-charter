@@ -194,7 +194,15 @@ const colorData = [
     description: `
       <div class="colorInfo">
         <h2>Welcome to Color Charter</h2>
-        <h3>Color Charter is a tool to aid in the design of websites, games, and more. The info button can be used on every menu selection to describe the characteristics of the palette being displayed.</h3>
+        <h3>Color Charter is a tool to aid in the design of websites, games, and more. The info button can be used on every menu selection to describe the characteristics of the palette being displayed.</h3><br/>
+        <h3>Once a palette has been created, it can be saved to your clipboard and pasted directly into a CSS file for use in styling. The palettes are declared in the CSS rules as variables and can be used in the following way:<br/><br/>
+
+        h1 {<br/>
+        &nbsp;&nbsp;color: var(--third-triad-color);<br/>
+        }<br/><br/>
+
+        This allows you to make color changes in only one place (the :root declaration block), then the updates take place everywhere in your file.</h3><br/>
+        <h3>A typical way of using a color palette is to use the key color for large swaths of color, such as in headers and footers. Then the other colors of the palette are usually used as accent colors for buttons, borders, and clickable icons.</h3>
       </div>
     `,
   },
