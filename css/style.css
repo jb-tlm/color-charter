@@ -11,11 +11,17 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
+    overflow: scroll;
+  overflow-x: hidden;
+}
+.body{
   align-items: center;
   overflow: scroll;
   overflow-x: hidden;
 }
- 
+.bodyMargin{
+  margin-right: 100px;
+}
 body::-webkit-scrollbar {
   border:none;
   width: 0;
@@ -125,6 +131,7 @@ header {
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
   background: lightgray;
+  width: 15vw;
 }
 
 #pageMenu>hr {
@@ -597,23 +604,25 @@ footer {
 ========= MEDIA QUERY
 ===================================*/
 
-@media screen and (max-width: 1020px) {
+@media screen and (max-width: 857px) {
   :root { font-size: .75rem; }
   #content,
   .colorList,
   .colorInfo {
-    width: 90vw;
-  }
+    width: 70vw;
+  } 
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-height: 857px) {
   :root { font-size: .5rem; }
 }
+
 
 @media screen and (max-height: 900px) {
   :root { font-size: .75rem; }
 }
 
-@media screen and (max-height: 700px) {
+@media screen and (max-height: 600px) {
   :root { font-size: .5rem; }
 }
+
