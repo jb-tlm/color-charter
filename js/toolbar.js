@@ -407,13 +407,14 @@ function createCSSFormat(key, data) {
 //===================================
 
 const pageMenu = document.querySelector('#pageMenu');
+const body = document.querySelector("#body");
 const menuBtn = document.querySelector('#menuBtn');
 
 // Functionality to handle menu selection from dropdown
 pageMenu.addEventListener('click', function(event) {
   const selection = event.target.id;
   if (!selection.includes('Tab')) return;
-  if (window.innerWidth < 1020) {
+  if (window.innerWidth < 300) {
     pageMenu.setAttribute('class', 'menuSlideUp');
     setTimeout(() => pageMenu.style.display = 'none', 1000);
   }
@@ -460,14 +461,18 @@ function changePage(selection) {
 
 // Sets menu state based on screen width
 function setMenuToggle() { 
+  if (window.innerWidth < 857) {
+ body.classList.remove("body")
+  } else {
+  body.setAttribute("class", "body");  
+   
+pageMenu.setAttribute("class", "menuSlideDown");
+  }
   if (window.innerWidth < 1020) {
     menuBtn.style.visibility = 'visible';
-    pageMenu.style.display = 'none';
-    pageMenu.setAttribute('class', 'menuSlideUp');
   } else {
     menuBtn.style.visibility = 'hidden';
     pageMenu.style.display = 'block';
-    pageMenu.setAttribute('class', 'menuSlideDown');
   }
 };
 
@@ -538,7 +543,7 @@ Array(12).fill(30).forEach((deg, idx) => {
   context.beginPath();
   context.moveTo(canvas.width / 2, canvas.height / 2);
   context.arc(
-    canvas.width / 2,
+    canvas.width / 2.,
     canvas.height / 2,
     canvas.height / 2,
     lastend,
