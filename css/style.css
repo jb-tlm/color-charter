@@ -422,7 +422,7 @@ canvas {
   cursor: pointer;
 }
 
-#copyPaletteBtn {
+.copyPaletteBtn {
   justify-self: end;
   align-self: end;
   font-size: 1rem;
@@ -430,7 +430,7 @@ canvas {
   padding: .15rem 0;
 }
 
-#clipboardTooltip {
+.clipboardTooltip {
   position: absolute;
   margin-top: -2.5rem;
   padding: 1px 5px 3px 5px;
