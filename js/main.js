@@ -51,12 +51,12 @@ for (let ii of paletteCopy) {
     return setTimeout(() => toast.setAttribute('class', 'toastSlideOut'), 3000);
   });
   ii.addEventListener('mouseover', function(ev) {
-    const ttip = ev.target.querySelector('h6');
+    const ttip = ev.target.querySelector('h6') || ev.target;
     ttip.classList.remove('tooltipLeave');
     ttip.classList.add('tooltipEnter');
   });
   ii.addEventListener('mouseout', function(ev) {
-    const ttip = ev.target.querySelector('h6');
+    const ttip = ev.target.querySelector('h6') || ev.target;
     ttip.classList.remove('tooltipEnter');
     ttip.classList.add('tooltipLeave');
   });
