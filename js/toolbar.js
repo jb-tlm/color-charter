@@ -83,12 +83,14 @@ function ColorHistory() {
     return generateColors(this.currentKeyColor);
   };
 
-  this.setCSSFormat = function(cssString) {
-    return this.cssFormat = cssString;
+  this.setCSSFormat = function(cssStringSet) {
+    return this.cssFormat = cssStringSet;
   };
 
-  this.getCSSFormat = function() {
-    return this.cssFormat;
+  this.getCSSFormat = function(type) {
+    return this.cssFormat.header + 
+           this.cssFormat[type] + 
+           this.cssFormat.footer;
   };
 
 };
@@ -309,84 +311,86 @@ const colorData = [
 ];
 
 function createCSSFormat(key, data) {
-  return `
+  return {
+    header: `
     /* Drop into your CSS file */\n
     /* Palette for ${key} */\n
-    :root {
+    :root {    `,
+    complementary: `
       /* Complementary palette */
       --key-comp-color: ${data.complementary[0]};
-      --second-comp-color: ${data.complementary[1]};
-      
+      --second-comp-color: ${data.complementary[1]};`,
+    split: `
       /* Split Complementary palette */
       --key-split-color: ${data.splitComplementary[0]};
       --second-split-color: ${data.splitComplementary[1]};
-      --third-split-color: ${data.splitComplementary[2]};
-      
+      --third-split-color: ${data.splitComplementary[2]};`,
+    analogous: `
       /* Analogous palette */
       --key-analogous-color: ${data.analogous[0]};
       --second-analogous-color: ${data.analogous[1]};
-      --third-analogous-color: ${data.analogous[2]};
-      
+      --third-analogous-color: ${data.analogous[2]};`,
+    triads: `
       /* Triads palette */
       --key-triad-color: ${data.triad[0]};
       --second-triad-color: ${data.triad[1]};
-      --third-triad-color: ${data.triad[2]};
-      
+      --third-triad-color: ${data.triad[2]};`,
+    tetrads: `
       /* Tetrads palette */
       --key-tetrad-color: ${data.tetrad[0]};
       --second-tetrad-color: ${data.tetrad[1]};
       --third-tetrad-color: ${data.tetrad[2]};
-      --fourth-tetrad-color: ${data.tetrad[3]};
-      
+      --fourth-tetrad-color: ${data.tetrad[3]};`,
+    monochrome: `
       /* Monochrome palette */
       --secondLt-monochrome-color: ${data.monochrome[0]};
       --firstLt-monochrome-color: ${data.monochrome[1]};
       --key-monochrome-color: ${data.monochrome[2]};
       --firstDk-monochrome-color: ${data.monochrome[3]};
-      --secondDk-monochrome-color: ${data.monochrome[4]};
-      
+      --secondDk-monochrome-color: ${data.monochrome[4]};`,
+    tints: `
       /* Tints */
       --first-tints-color: ${data.tints[0]};
       --second-tints-color: ${data.tints[1]};
       --third-tints-color: ${data.tints[2]};
       --fourth-tints-color: ${data.tints[3]};
-      --fifth-tints-color: ${data.tints[4]};
-      
+      --fifth-tints-color: ${data.tints[4]};`,
+    shades: `
       /* Shades */
       --first-shades-color: ${data.shades[0]};
       --second-shades-color: ${data.shades[1]};
       --third-shades-color: ${data.shades[2]};
       --fourth-shades-color: ${data.shades[3]};
-      --fifth-shades-color: ${data.shades[4]};
-      
+      --fifth-shades-color: ${data.shades[4]};`,
+    warmgrays: `
       /* Warm Grayscales */
       --first-warmGrays-color: ${data.warmGrays[0]};
       --second-warmGrays-color: ${data.warmGrays[1]};
       --third-warmGrays-color: ${data.warmGrays[2]};
       --fourth-warmGrays-color: ${data.warmGrays[3]};
-      --fifth-warmGrays-color: ${data.warmGrays[4]};
-      
+      --fifth-warmGrays-color: ${data.warmGrays[4]};`,
+    coolgrays: `
       /* Cool Grayscales */
       --first-coolGrays-color: ${data.coolGrays[0]};
       --second-coolGrays-color: ${data.coolGrays[1]};
       --third-coolGrays-color: ${data.coolGrays[2]};
       --fourth-coolGrays-color: ${data.coolGrays[3]};
-      --fifth-coolGrays-color: ${data.coolGrays[4]};
-      
+      --fifth-coolGrays-color: ${data.coolGrays[4]};`,
+    commonwhites: `
       /* Common Whites */
       --common-ghostwhite-color: ${data.commonWhites[0]};
       --common-whitesmoke-color: ${data.commonWhites[1]};
       --common-seashell-color: ${data.commonWhites[2]};
       --common-floralwhite-color: ${data.commonWhites[3]};
-      --common-antiquewhite-color: ${data.commonWhites[4]};
-      
+      --common-antiquewhite-color: ${data.commonWhites[4]};`,
+    commongrays: `
       /* Common Grays */
       --common-gainsboro-color: ${data.commonGrays[0]};
       --common-silver-color: ${data.commonGrays[1]};
       --common-darkgray-color: ${data.commonGrays[2]};
       --common-gray-color: ${data.commonGrays[3]};
-      --common-dimgray-color: ${data.commonGrays[4]};
-
+      --common-dimgray-color: ${data.commonGrays[4]};`,
+    gradation: `
       /* Gradations */
       --key-gradation-color: ${data.gradations[0]};
       --second-gradation-color: ${data.gradations[1]};
@@ -397,9 +401,10 @@ function createCSSFormat(key, data) {
       --seventh-gradation-color: ${data.gradations[6]};
       --eighth-gradation-color: ${data.gradations[7]};
       --ninth-gradation-color: ${data.gradations[8]};
-      --secondary-gradation-color: ${data.gradations[9]};
-    }
-  `;
+      --secondary-gradation-color: ${data.gradations[9]};`,
+    footer: `
+    }`
+  };
 };
 
 //===================================

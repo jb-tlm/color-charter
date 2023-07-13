@@ -6,8 +6,8 @@ const colorForm = document.querySelector('#colorForm');
 const colorBtn = document.querySelector('#colorBtn');
 const secondaryForm = document.querySelector('#secondaryForm');
 const secondaryBtn = document.querySelector('#secondaryBtn');
-const paletteCopy = document.querySelector('#copyPaletteBtn');
-const tooltip = document.querySelector('#clipboardTooltip');
+const paletteCopy = document.querySelectorAll('.copyPaletteBtn');
+const tooltip = document.querySelectorAll('.clipboardTooltip');
 
 // Receives user input from color form and
 // begins the palette generator process
@@ -42,21 +42,25 @@ secondaryForm.addEventListener('submit', function(event) {
 secondaryForm.addEventListener('change', function() { secondaryBtn.focus(); });
 
 // Functionality for clipboard
-paletteCopy.addEventListener('click', function() {
-  navigator.clipboard.writeText(sessionHistory.getCSSFormat());
-  const toast = document.querySelector('#clipboardToast');
-  toast.innerHTML = `Palettes for key color ${sessionHistory.currentKeyColor} have been saved to your clipboard`
-  toast.setAttribute('class', 'toastSlideIn');
-  return setTimeout(() => toast.setAttribute('class', 'toastSlideOut'), 3000);
-});
-
-paletteCopy.addEventListener('mouseover', function() {
-  tooltip.setAttribute('class', 'tooltipEnter');
-});
-
-paletteCopy.addEventListener('mouseout', function() {
-  tooltip.setAttribute('class', 'tooltipLeave');
-});
+for (let ii of paletteCopy) {
+  ii.addEventListener('click', function(ev) {
+    navigator.clipboard.writeText(sessionHistory.getCSSFormat(ev.target.dataset['combobox']));
+    const toast = document.querySelector('#clipboardToast');
+    toast.innerHTML = `Palettes for key color ${sessionHistory.currentKeyColor} have been saved to your clipboard`
+    toast.setAttribute('class', 'toastSlideIn');
+    return setTimeout(() => toast.setAttribute('class', 'toastSlideOut'), 3000);
+  });
+  ii.addEventListener('mouseover', function(ev) {
+    const ttip = ev.target.querySelector('h6') || ev.target;
+    ttip.classList.remove('tooltipLeave');
+    ttip.classList.add('tooltipEnter');
+  });
+  ii.addEventListener('mouseout', function(ev) {
+    const ttip = ev.target.querySelector('h6') || ev.target;
+    ttip.classList.remove('tooltipEnter');
+    ttip.classList.add('tooltipLeave');
+  });
+}
 
 // Functionality for creating individual palettes
 function generateColors(input) {

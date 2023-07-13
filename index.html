@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Color Charter</title>
   <link rel="stylesheet" href="https://cdn.tlm.cloud/fontawesome/5.15.2/css/all.css" integrity="sha384-+ioeoxQvfPYLCoZqU6XvHE+J8Wb3CogZo13PwI1Ptkv/fkzdPKA5nGUGMuzkS2Y9" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body id="body">
@@ -52,10 +53,6 @@
       <input type="color" id="colorInput" name="colorInput" autofocus="autofocus">
       <button type="submit" id="colorBtn"><h1 class="fas fa-palette icon colorPalette"></h1></button>
     </fieldset>
-    
-    <button id="copyPaletteBtn" class="btn fas fa-clipboard">
-      <h6 id="clipboardTooltip" class="tooltipLeave">copy</h6>
-    </button>
   </form>
 
   <!--Content sections-->
@@ -93,6 +90,9 @@
     <div class="colorList">
       <div>
         <h2>Complementary</h2>
+        <button class="btn fas fa-clipboard copyPaletteBtn" data-combobox="complementary">
+          <h6 class="clipboardTooltip tooltipLeave">copy</h6>
+        </button>    
       </div>
       <div class="colorRow" id="complementary"></div>
     </div>
@@ -103,6 +103,9 @@
     <div class="colorList">
       <div>
         <h2>Split Complementary</h2>
+        <button class="btn fas fa-clipboard copyPaletteBtn" data-combobox="split">
+          <h6 class="clipboardTooltip tooltipLeave">copy</h6>
+        </button>    
       </div>
       <div class="colorRow" id="splitComplementary"></div>
     </div>
@@ -113,6 +116,9 @@
     <div class="colorList">
       <div>
         <h2>Analogous</h2>
+        <button class="btn fas fa-clipboard copyPaletteBtn" data-combobox="analogous">
+          <h6 class="clipboardTooltip tooltipLeave">copy</h6>
+        </button>    
       </div>
       <div class="colorRow" id="analogous"></div>
     </div>
@@ -123,6 +129,9 @@
     <div class="colorList">
       <div>
         <h2>Triads</h2>
+        <button class="btn fas fa-clipboard copyPaletteBtn" data-combobox="triads">
+          <h6 class="clipboardTooltip tooltipLeave">copy</h6>
+        </button>    
       </div>
       <div class="colorRow" id="triad"></div>
     </div>
@@ -133,6 +142,9 @@
     <div class="colorList">
       <div>
         <h2>Tetrads</h2>
+        <button class="btn fas fa-clipboard copyPaletteBtn" data-combobox="tetrads">
+          <h6 class="clipboardTooltip tooltipLeave">copy</h6>
+        </button>    
       </div>
       <div class="colorRow" id="tetrad"></div>
     </div>
@@ -143,6 +155,9 @@
     <div class="colorList">
       <div>
         <h2>Monochromes</h2>
+        <button class="btn fas fa-clipboard copyPaletteBtn" data-combobox="monochrome">
+          <h6 class="clipboardTooltip tooltipLeave">copy</h6>
+        </button>    
       </div>
       <div class="colorRow" id="monochrome"></div>
     </div>
@@ -153,12 +168,18 @@
     <div class="colorList">
       <div>
         <h2>Tints</h2>
+        <button class="btn fas fa-clipboard copyPaletteBtn" data-combobox="tints">
+          <h6 class="clipboardTooltip tooltipLeave">copy</h6>
+        </button>    
       </div>
       <div class="colorRow" id="tints"></div>
     </div>
     <div class="colorList">
       <div>
         <h2>Shades</h2>
+        <button class="btn fas fa-clipboard copyPaletteBtn" data-combobox="shades">
+          <h6 class="clipboardTooltip tooltipLeave">copy</h6>
+        </button>    
       </div>
       <div class="colorRow" id="shades"></div>
     </div>
@@ -169,12 +190,18 @@
     <div class="colorList">
       <div>
         <h2>Warm Grayscales</h2>
+        <button class="btn fas fa-clipboard copyPaletteBtn" data-combobox="warmgrays">
+          <h6 class="clipboardTooltip tooltipLeave">copy</h6>
+        </button>
       </div>
       <div class="colorRow" id="warmGrayscales"></div>
     </div>
     <div class="colorList">
       <div>
         <h2>Cool Grayscales</h2>
+        <button class="btn fas fa-clipboard copyPaletteBtn" data-combobox="coolgrays">
+          <h6 class="clipboardTooltip tooltipLeave">copy</h6>
+        </button>
       </div>
       <div class="colorRow" id="coolGrayscales"></div>
     </div>
@@ -185,12 +212,18 @@
     <div class="colorList">
       <div>
         <h2>Common Whites</h2>
+        <button class="btn fas fa-clipboard copyPaletteBtn" data-combobox="commonwhites">
+          <h6 class="clipboardTooltip tooltipLeave">copy</h6>
+        </button>    
       </div>
       <div class="colorRow" id="commonWhites"></div>
     </div>
     <div class="colorList">
       <div>
         <h2>Common Grays</h2>
+        <button class="btn fas fa-clipboard copyPaletteBtn" data-combobox="commongrays">
+          <h6 class="clipboardTooltip tooltipLeave">copy</h6>
+        </button>
       </div>
       <div class="colorRow" id="commonGrays"></div>
     </div>
@@ -201,12 +234,18 @@
     <div class="colorList">
       <div>
         <h2>Gradients from Key toward Secondary</h2>
+        <button class="btn fas fa-clipboard copyPaletteBtn" data-combobox="gradation">
+          <h6 class="clipboardTooltip tooltipLeave">copy</h6>
+        </button>
       </div>
       <div class="colorRow" id="keyGradients"></div>
     </div>
     <div class="colorList">
       <div>
         <h2>Gradients from Secondary toward Key</h2>
+        <button class="btn fas fa-clipboard copyPaletteBtn" data-combobox="gradation">
+          <h6 class="clipboardTooltip tooltipLeave">copy</h6>
+        </button>
       </div>
       <div class="colorRow" id="secondaryGradients"></div>
     </div>
