@@ -7,6 +7,8 @@ const sessionHistory = new ColorHistory();
 const addHistoryBtn = document.querySelector('#addHistoryBtn');
 const removeHistoryBtn = document.querySelector('#removeHistoryBtn');
 const colorBar = document.querySelector('#colorBar');
+const colorBarCB = document.querySelector('#colorBarCB');
+const colorBarBtn = document.querySelector('#colorBarBtn');
 
 // Functionality to handle History+ and History- buttons
 addHistoryBtn.addEventListener('click', updateHistory);
@@ -19,13 +21,47 @@ colorBar.addEventListener('click', function(event) {
   hexText.innerHTML = sessionHistory.currentKeyColor;
   return sessionHistory.printHistory();
 });
+colorBarBtn.addEventListener('click', function(event) {
+  navigator.clipboard.writeText(getColorBarData());
+  const toast = document.querySelector('#clipboardToast');
+  toast.innerHTML = `Palettes on the color bar have been saved to your clipboard`;
+  toast.setAttribute('class', 'toastSlideIn');
+  return setTimeout(() => toast.setAttribute('class', 'toastSlideOut'), 3000);
+});
+colorBarBtn.addEventListener('mouseover', function(ev) {
+  const ttip = ev.target.querySelector('h6') || ev.target;
+  ttip.classList.remove('tooltipLeave');
+  ttip.classList.add('tooltipEnter');
+});
+colorBarBtn.addEventListener('mouseout', function(ev) {
+  const ttip = ev.target.querySelector('h6') || ev.target;
+  ttip.classList.remove('tooltipEnter');
+  ttip.classList.add('tooltipLeave');
+});
+
+// String to be furnished to the clipboard listing all colors in the color bar.
+function getColorBarData() {
+  let count = 1;
+  let colorList = '/* Drop into your CSS file */\n\n:root {\n';
+  for (let el of colorBar.children) {
+    colorList += `  --comp-color-${count++}: ${el.getAttribute('data')}${';\n'}`;
+  }
+  colorList += '}\n'
+  return colorList;
+}
+
+function sessionHistoryBtnEnable() {
+  colorBarCB.style.visibility = 
+    colorBar.childElementCount ? 'visible' : 'hidden';
+}
 
 // Updates color history to add or remove current color
 function updateHistory(event) {
   const historyOperation = event.target.id;
-  return historyOperation.includes('addHistory')
+  historyOperation.includes('addHistory')
     ? sessionHistory.addHistory()
     : sessionHistory.removeHistory();
+  sessionHistoryBtnEnable();
 };
 
 // Contructor function for color history functionality

@@ -22,7 +22,14 @@
         <span class="menuBtnBars fas fa-bars"></span>
       </div>
     </div>
-    <div id="colorBar"><!-- Color history prints here --></div>
+    <div id="colorBarContainer">
+      <div id="colorBar"><!-- Color history prints here --></div>
+      <div id="colorBarCB">
+        <button id="colorBarBtn" class="btn fas fa-clipboard colorBarBtnStyle" data-combobox="complementary">
+          <h6 class="clipboardTooltip tooltipLeave">copy</h6>
+        </button>
+      </div>      
+    </div>
   </header>
 
   <!--Menu Button-->
@@ -44,10 +51,13 @@
 
   <!--Form-->
   <form class="colorList" id="colorForm">
-    <div>
+    <div id="colorFormTop">
       <h2>Key Color<span id="hexText"></span></h2>
-      <button id="removeHistoryBtn" class="btn">HISTORY -</button>
-      <button id="addHistoryBtn" class="btn">HISTORY +</button>
+      <h2>
+        Palette
+        <button id="removeHistoryBtn" class="btn">Remove</button>
+        <button id="addHistoryBtn" class="btn">Add</button>
+      </h2>
     </div>
     <fieldset>
       <input type="color" id="colorInput" name="colorInput" autofocus="autofocus">
