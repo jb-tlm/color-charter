@@ -15,7 +15,7 @@ ___
 ___
 
 ## *Site Capabilities* ##
-**Color Charter** generates 6 common color palettes: complementary, triad, tetrad, split complementary, analogous, and monochrome. Additionally it can create 4 accent palettes of grayshades, tints, common colors, and gradients between a secondary color. All palettes can be temporarily saved and revisited, or their values can be saved to a clipboard for implementation in an editor or CSS file.
+**Color Charter** generates 6 common color palettes: complementary, triad, tetrad, split complementary, analogous, and monochrome. Additionally it can create 3 accent palettes of grayshades, tints, and gradients between a secondary color. All palettes can be temporarily saved and revisited, or their values can be saved to a clipboard for implementation in an editor or CSS file.
 ___
 
 ## *Project Status* ##
