@@ -4,16 +4,17 @@
 
 const sessionHistory = new ColorHistory();
 
-const addHistoryBtn = document.querySelector('#addHistoryBtn');
-const removeHistoryBtn = document.querySelector('#removeHistoryBtn');
+const addHistoryBtn = document.querySelectorAll('.addHistoryBtnJs');
+const removeHistoryBtn = document.querySelectorAll('.removeHistoryBtnJs');
 const colorBar = document.querySelector('#colorBar');
 const colorBarCB = document.querySelector('#colorBarCB');
 const colorBarBtn = document.querySelector('#colorBarBtn');
 
 // Functionality to handle History+ and History- buttons
-addHistoryBtn.addEventListener('click', updateHistory);
-removeHistoryBtn.addEventListener('click', updateHistory);
+for (let el of addHistoryBtn) el.addEventListener('click', updateHistory);
+for (let el of removeHistoryBtn) el.addEventListener('click', updateHistory);
 colorBar.addEventListener('click', function(event) {
+  if (!event.target.attributes.data) return;
   const barSelection = event.target.attributes.data.value;
   sessionHistory.setCurrentKeyColor(barSelection);
   generateColors(barSelection);
@@ -57,9 +58,9 @@ function sessionHistoryBtnEnable() {
 
 // Updates color history to add or remove current color
 function updateHistory(event) {
-  const historyOperation = event.target.id;
+  const historyOperation = event.target.classList.value;
   historyOperation.includes('addHistory')
-    ? sessionHistory.addHistory()
+    ? sessionHistory.addHistory(event.target)
     : sessionHistory.removeHistory();
   sessionHistoryBtnEnable();
 };
@@ -85,9 +86,11 @@ function ColorHistory() {
     return this.currentColorChart = chart;
   };
 
-  this.addHistory = function() {
-    if (this.historyList.includes(this.currentKeyColor)) return;
-    this.historyList = [...this.historyList, this.currentKeyColor];
+  this.addHistory = function(target) {
+    const color = target.parentElement.parentElement
+      .querySelector('span').textContent || '#000000';
+    if (this.historyList.includes(color)) return;
+    this.historyList = [...this.historyList, color];
     return this.updateColorBar();
   };
 
@@ -95,9 +98,7 @@ function ColorHistory() {
     if (!this.historyList.includes(this.currentKeyColor)) return;
     const updatedList = this.historyList.filter(color => color !== this.currentKeyColor);
     this.historyList = updatedList;
-    this.currentKeyColor = '#c8c8c8';
     this.updateColorBar();
-    return this.printHistory();
   };
 
   this.updateColorBar = function() {

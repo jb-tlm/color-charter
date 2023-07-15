@@ -28,6 +28,7 @@
         <button id="colorBarBtn" class="btn fas fa-clipboard colorBarBtnStyle" data-combobox="complementary">
           <h6 class="clipboardTooltip tooltipLeave">copy</h6>
         </button>
+        <button class="btn fas fa-times colorBarBtnStyle removeHistoryBtnJs"></button>
       </div>      
     </div>
   </header>
@@ -55,8 +56,7 @@
       <h2>Key Color<span id="hexText"></span></h2>
       <h2>
         Palette
-        <button id="removeHistoryBtn" class="btn">Remove</button>
-        <button id="addHistoryBtn" class="btn">Add</button>
+        <button class="btn addHistoryBtnJs">Add</button>
       </h2>
     </div>
     <fieldset>
@@ -229,6 +229,19 @@
 
   <!--Secondary page-->
   <div id="secondaryPage">
+    <form class="colorList" id="secondaryForm">
+      <div id="secondaryFormTop">
+        <h2>Secondary Color<span id="secHexText"></span></h2>
+        <h2>
+          Palette
+          <button class="btn addHistoryBtnJs">Add</button>
+        </h2>
+      </div>
+      <fieldset>
+        <input type="color" id="secondaryInput" name="secondaryInput" autofocus="autofocus"/>
+        <button type="submit" id="secondaryBtn"><h1 class="fas fa-palette icon colorPalette"></h1></button>
+      </fieldset>
+    </form>
     <div class="colorList">
       <div>
         <h2>Gradients from Key toward Secondary</h2>
@@ -247,13 +260,6 @@
       </div>
       <div class="colorRow" id="secondaryGradients"></div>
     </div>
-    <form class="colorList" id="secondaryForm">
-      <fieldset>
-        <h2>Secondary Color Selection</h2>
-        <input type="color" id="secondaryInput" name="secondaryInput" autofocus="autofocus"/>
-        <button type="submit" id="secondaryBtn"><h1 class="fas fa-palette icon colorPalette"></h1></button>
-      </fieldset>
-    </form>
   </div>
 
   <!--Content sections-->

@@ -37,6 +37,10 @@ secondaryForm.addEventListener('submit', function(event) {
   document.querySelector('#keyGradients').innerHTML = '';
   document.querySelector('#secondaryGradients').innerHTML = '';
   generateColors(sessionHistory.currentKeyColor);
+  const secHexText = document.querySelector('#secHexText');
+  secHexText.innerHTML = secondColor;
+  if (sessionHistory.historyList.includes(secondColor)) return;
+  sessionHistory.setCurrentKeyColor(secondColor);
 });
 
 secondaryForm.addEventListener('change', function() { secondaryBtn.focus(); });
