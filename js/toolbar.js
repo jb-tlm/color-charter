@@ -326,16 +326,6 @@ const colorData = [
     `,
   },
   {
-    name: 'common',
-    elementList: false,
-    description: `
-      <div class="colorInfo">
-        <h2>Common Colors</h2>
-        <h3>These palettes are made of commonly-known shades of white and gray. They have each been additionally weighted with a tincture of the key color.</h3>
-      </div>
-    `,
-  },
-  {
     name: 'secondary',
     elementList: false,
     description: `
@@ -413,20 +403,6 @@ function createCSSFormat(key, data) {
       --third-coolGrays-color: ${data.coolGrays[2]};
       --fourth-coolGrays-color: ${data.coolGrays[3]};
       --fifth-coolGrays-color: ${data.coolGrays[4]};`,
-    commonwhites: `
-      /* Common Whites */
-      --common-ghostwhite-color: ${data.commonWhites[0]};
-      --common-whitesmoke-color: ${data.commonWhites[1]};
-      --common-seashell-color: ${data.commonWhites[2]};
-      --common-floralwhite-color: ${data.commonWhites[3]};
-      --common-antiquewhite-color: ${data.commonWhites[4]};`,
-    commongrays: `
-      /* Common Grays */
-      --common-gainsboro-color: ${data.commonGrays[0]};
-      --common-silver-color: ${data.commonGrays[1]};
-      --common-darkgray-color: ${data.commonGrays[2]};
-      --common-gray-color: ${data.commonGrays[3]};
-      --common-dimgray-color: ${data.commonGrays[4]};`,
     gradation: `
       /* Gradations */
       --key-gradation-color: ${data.gradations[0]};

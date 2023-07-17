@@ -81,8 +81,6 @@ function generateColors(input) {
   colorData.shades = setVariants(input, 'shades');
   colorData.warmGrays = setGrayshades(input, 'warm');
   colorData.coolGrays = setGrayshades(input, 'cool');
-  colorData.commonWhites = setCommons(input, 'commonWhites');
-  colorData.commonGrays = setCommons(input, 'commonGrays');
   colorData.gradations = setGradations(input, sessionHistory.currentSecondaryColor);
   sessionHistory.setCurrentColorChart(colorData);
   return sessionHistory.setCSSFormat(createCSSFormat(input, colorData));
@@ -215,39 +213,6 @@ function setGrayshades(color, temp) {
   const grayTemp = (temp === 'warm') ? 'warmGrayscales' : 'coolGrayscales';
   const grayResult = createContainers(hexArray, grayTemp);
   return grayResult;
-};
-
-function setCommons(color, type) {
-  const rgbColor = HEXtoRGB(color);
-  const whiteColors = ['#f8f8ff', '#f5f5f5', '#fff5ee', '#fffaf0', '#faebd7'];
-  const grayColors = ['#dcdcdc', '#c0c0c0', '#a9a9a9', '#808080', '#696969'];
-  const whiteLabels = ['ghostwhite', 'whitesmoke', 'seashell', 'floralwhite', 'antiquewhite'];
-  const grayLabels = ['gainsboro', 'silver', 'darkgray', 'gray', 'dimgray'];
-  const commonList = type.includes('White') ? whiteColors : grayColors;
-  const commonLabels = type.includes('White') ? whiteLabels : grayLabels;
-  const commonRGBArray = commonList.map(hex => HEXtoRGB(hex));
-  let lowIdx = 0, midIdx = 1, highIdx = 2;
-  if (!rgbColor.every(val => val === rgbColor[0])) {
-    lowIdx = rgbColor.indexOf(Math.min(...rgbColor));
-    highIdx = rgbColor.indexOf(Math.max(...rgbColor));
-    midIdx = [0, 1, 2].filter(num => ![lowIdx, highIdx].includes(num)).pop();
-  }
-  const lowDiff = (rgbColor[midIdx] - rgbColor[lowIdx]);
-  const highDiff = (rgbColor[highIdx] - rgbColor[midIdx]);
-  const lowsubVal = (lowDiff === 0) ? 0 : (lowDiff < 128) ? 3 : 6;
-  const highAddVal = (highDiff === 0) ? 0 : (highDiff < 128) ? 3 : 6;
-  const newCommonRGBArray = commonRGBArray.map(arr => {
-    const lowCommonVal = (arr[lowIdx] - lowsubVal <= 255) ? (arr[lowIdx] - lowsubVal) : 255;
-    const highCommonVal = (arr[highIdx] + highAddVal <= 255) ? (arr[highIdx] + highAddVal) : 255;
-    let newArr = [];
-    newArr[lowIdx] = lowCommonVal;
-    newArr[midIdx] = arr[midIdx];
-    newArr[highIdx] = highCommonVal;
-    return newArr;
-  });
-  const commonHEXArray = newCommonRGBArray.map(arr => RGBtoHEX(arr));
-  const commonResult = createContainers(commonHEXArray, type, commonLabels);
-  return commonResult;
 };
 
 function setGradations(keyColor, secondColor) {
