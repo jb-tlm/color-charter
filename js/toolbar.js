@@ -95,9 +95,7 @@ function ColorHistory() {
   };
 
   this.removeHistory = function() {
-    if (!this.historyList.includes(this.currentKeyColor)) return;
-    const updatedList = this.historyList.filter(color => color !== this.currentKeyColor);
-    this.historyList = updatedList;
+    if (this.historyList.length) this.historyList.pop();
     this.updateColorBar();
   };
 
