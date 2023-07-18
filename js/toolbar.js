@@ -60,10 +60,14 @@ function sessionHistoryBtnEnable() {
 function updateHistory(event) {
   const historyOperation = event.target.classList.value;
   historyOperation.includes('addHistory')
-    ? sessionHistory.addHistory(event.target)
+    ? setSectionColor(event.target)
     : sessionHistory.removeHistory();
-  sessionHistoryBtnEnable();
 };
+
+function setSectionColor(target) {
+  const color = target.parentElement.parentElement.querySelector('span').textContent;
+  if (color) sessionHistory.addHistory(color);
+}
 
 // Contructor function for color history functionality
 function ColorHistory() {
@@ -86,17 +90,17 @@ function ColorHistory() {
     return this.currentColorChart = chart;
   };
 
-  this.addHistory = function(target) {
-    const color = target.parentElement.parentElement
-      .querySelector('span').textContent || '#000000';
+  this.addHistory = function(color) {
     if (this.historyList.includes(color)) return;
     this.historyList = [...this.historyList, color];
-    return this.updateColorBar();
+    this.updateColorBar();
+    sessionHistoryBtnEnable();
   };
 
   this.removeHistory = function() {
     if (this.historyList.length) this.historyList.pop();
     this.updateColorBar();
+    sessionHistoryBtnEnable();
   };
 
   this.updateColorBar = function() {

@@ -66,6 +66,16 @@ for (let ii of paletteCopy) {
   });
 }
 
+// Clickable color squares-as-a-button - Send background color to the color bar.
+// Use event delegation at 'body' level
+document.querySelector('body').addEventListener('click', function(ev) {
+  const tgt = ev.target;
+  if (tgt.classList.contains('colorSquare')) {
+    const [_, __, r, g, b] = /(\((.+),(.+),(.+)\))/.exec(tgt.style.backgroundColor);
+    sessionHistory.addHistory(RGBtoHEX([Number(r), Number(g), Number(b)]));
+  }
+});
+
 // Functionality for creating individual palettes
 function generateColors(input) {
   clearContainers();

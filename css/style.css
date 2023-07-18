@@ -407,6 +407,14 @@ canvas {
   border: 1px solid darkgray;
   border-radius: .5rem;
 }
+.colorSquare:hover {
+  border: 1px solid black;
+  box-shadow: 0 0 4px black;
+}
+.colorSquare:active {
+  border: 1px solid darkgray;
+  box-shadow: none;
+}
 
 .keySpace {
   padding-top: .24rem;
