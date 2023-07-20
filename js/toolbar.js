@@ -1,26 +1,26 @@
 //===================================
-//======= HISTORY CONTROLS
+//======= COLOR BAR CONTROLS
 //===================================
 
-const sessionHistory = new ColorHistory();
+const colorBar = new ColorBar();
 
-const addHistoryBtn = document.querySelectorAll('.addHistoryBtnJs');
-const removeHistoryBtn = document.querySelectorAll('.removeHistoryBtnJs');
-const colorBar = document.querySelector('#colorBar');
+const addColorBtn = document.querySelectorAll('.addHistoryBtnJs');
+const removeColorBtn = document.querySelectorAll('.removeHistoryBtnJs');
+const colorBarElem = document.querySelector('#colorBar');
 const colorBarCB = document.querySelector('#colorBarCB');
 const colorBarBtn = document.querySelector('#colorBarBtn');
 
-// Functionality to handle History+ and History- buttons
-for (let el of addHistoryBtn) el.addEventListener('click', updateHistory);
-for (let el of removeHistoryBtn) el.addEventListener('click', updateHistory);
-colorBar.addEventListener('click', function(event) {
+// Functionality to handle Add and 'X'(remove) colors buttons.
+for (let el of addColorBtn) el.addEventListener('click', updateColorBar);
+for (let el of removeColorBtn) el.addEventListener('click', updateColorBar);
+colorBarElem.addEventListener('click', function(event) {
   if (!event.target.attributes.data) return;
   const barSelection = event.target.attributes.data.value;
-  sessionHistory.setCurrentKeyColor(barSelection);
+  colorBar.setCurrentKeyColor(barSelection);
   generateColors(barSelection);
   const hexText = document.querySelector('#hexText');
-  hexText.innerHTML = sessionHistory.currentKeyColor;
-  return sessionHistory.printHistory();
+  hexText.innerHTML = colorBar.currentKeyColor;
+  return colorBar.printHistory();
 });
 colorBarBtn.addEventListener('click', function(event) {
   navigator.clipboard.writeText(getColorBarData());
@@ -44,34 +44,34 @@ colorBarBtn.addEventListener('mouseout', function(ev) {
 function getColorBarData() {
   let count = 1;
   let colorList = '/* Drop into your CSS file */\n\n:root {\n';
-  for (let el of colorBar.children) {
+  for (let el of colorBarElem.children) {
     colorList += `  --comp-color-${count++}: ${el.getAttribute('data')}${';\n'}`;
   }
   colorList += '}\n'
   return colorList;
 }
 
-function sessionHistoryBtnEnable() {
+function colorBarBtnEnable() {
   colorBarCB.style.visibility = 
-    colorBar.childElementCount ? 'visible' : 'hidden';
+    colorBarElem.childElementCount ? 'visible' : 'hidden';
 }
 
-// Updates color history to add or remove current color
-function updateHistory(event) {
-  const historyOperation = event.target.classList.value;
-  historyOperation.includes('addHistory')
+// Updates the color bar to add or remove current color
+function updateColorBar(event) {
+  const colorOperation = event.target.classList.value;
+  colorOperation.includes('addHistory')
     ? setSectionColor(event.target)
-    : sessionHistory.removeHistory();
+    : colorBar.removeColor();
 };
 
 function setSectionColor(target) {
   const color = target.parentElement.parentElement.parentElement
     .querySelector('input').value;
-  if (color && color!="") sessionHistory.addHistory(color);
+  if (color && color!="") colorBar.addColor(color);
 }
 
-// Contructor function for color history functionality
-function ColorHistory() {
+// Contructor function for color bar functionality
+function ColorBar() {
   this.historyList = [];
   this.currentKeyColor = '#c8c8c8';
   this.currentSecondaryColor = '#c8c8c8';
@@ -91,28 +91,28 @@ function ColorHistory() {
     return this.currentColorChart = chart;
   };
 
-  this.addHistory = function(color) {
+  this.addColor = function(color) {
     if (this.historyList.includes(color)) return;
     this.historyList = [...this.historyList, color];
     this.updateColorBar();
-    sessionHistoryBtnEnable();
+    colorBarBtnEnable();
   };
 
-  this.removeHistory = function() {
+  this.removeColor = function() {
     if (this.historyList.length) this.historyList.pop();
     this.updateColorBar();
-    sessionHistoryBtnEnable();
+    colorBarBtnEnable();
   };
 
   this.updateColorBar = function() {
-    colorBar.innerHTML = '';
+    colorBarElem.innerHTML = '';
     const historyList = [...this.historyList];
     historyList.reverse().forEach(color => {
       const colorDiv = document.createElement('div');
       colorDiv.setAttribute('data', color);
       colorDiv.setAttribute('class', 'colorRibbon');
       colorDiv.style.backgroundColor = color;
-      colorBar.appendChild(colorDiv);
+      colorBarElem.appendChild(colorDiv);
     });
   };
 
@@ -151,7 +151,7 @@ const secondText = document.querySelector('#keyBgSecondText');
 function applyPalette(selection) {
   const [paletteData] = colorData.filter(palette => palette.name === selection);
   if (!paletteData.elementList) return;
-  const colorChart = sessionHistory.currentColorChart[selection];
+  const colorChart = colorBar.currentColorChart[selection];
   const paletteColors = (selection === 'monochrome')
     ? [colorChart[2], ...colorChart.slice(0, 2), colorChart[4]]
     : colorChart;
@@ -468,7 +468,7 @@ function setActive(active) {
 };
 
 function changePage(selection) {
-  sessionHistory.currentPage = selection;
+  colorBar.currentPage = selection;
   content.style.display = 'none';
   for (page of colorData) {
     if (page.name === selection) {
@@ -531,7 +531,7 @@ infoBlock.addEventListener('click', function(event) {
   if (event.target.id.includes('Block')) return;
   infoPanel.setAttribute('class', 'panelFadeIn');
   const [data] = colorData.filter(colorObj => {
-    return colorObj.name === sessionHistory.currentPage;
+    return colorObj.name === colorBar.currentPage;
   });
   infoPanel.innerHTML = data.description;
   return infoPanel.style.display = 'block';
