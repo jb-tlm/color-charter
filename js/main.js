@@ -15,7 +15,6 @@ colorForm.addEventListener('submit', function(event) {
   event.preventDefault();
   colorBtn.blur();
   const color = this.elements.colorInput.value;
-  if (sessionHistory.historyList.includes(color)) return;
   generateColors(color);
   if (sessionHistory.currentPage === 'colorWheel') {
     updateUI('complementaryTab');
