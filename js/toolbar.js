@@ -65,8 +65,9 @@ function updateHistory(event) {
 };
 
 function setSectionColor(target) {
-  const color = target.parentElement.parentElement.querySelector('span').textContent;
-  if (color) sessionHistory.addHistory(color);
+  const color = target.parentElement.parentElement.parentElement
+    .querySelector('input').value;
+  if (color && color!="") sessionHistory.addHistory(color);
 }
 
 // Contructor function for color history functionality
