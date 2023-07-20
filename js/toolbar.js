@@ -502,7 +502,6 @@ window.onresize = setMenuToggle;
 // Composite IIFE to set pages on load
 (function loadPage() {
   setMenuToggle()
-  setActive('colorWheelTab');
   changePage('colorWheel');
 })();
 
@@ -529,12 +528,13 @@ infoPanel.addEventListener('click', function() {
 
 infoBlock.addEventListener('click', function(event) {
   if (event.target.id.includes('Block')) return;
-  infoPanel.setAttribute('class', 'panelFadeIn');
-  const [data] = colorData.filter(colorObj => {
-    return colorObj.name === colorBar.currentPage;
-  });
-  infoPanel.innerHTML = data.description;
-  return infoPanel.style.display = 'block';
+  const selection = event.target.id;
+  if (!selection.includes('Btn')) return;
+  if (window.innerWidth < 300) {
+    pageMenu.setAttribute('class', 'menuSlideUp');
+    setTimeout(() => pageMenu.style.display = 'none', 1000);
+  }
+  return updateUI('colorWheelTab');
 });
 
 //===================================
