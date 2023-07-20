@@ -4,8 +4,8 @@
 
 const colorBar = new ColorBar();
 
-const addColorBtn = document.querySelectorAll('.addHistoryBtnJs');
-const removeColorBtn = document.querySelectorAll('.removeHistoryBtnJs');
+const addColorBtn = document.querySelectorAll('.addColorBtnJs');
+const removeColorBtn = document.querySelectorAll('.removeColorBtnJs');
 const colorBarElem = document.querySelector('#colorBar');
 const colorBarCB = document.querySelector('#colorBarCB');
 const colorBarBtn = document.querySelector('#colorBarBtn');
@@ -20,7 +20,7 @@ colorBarElem.addEventListener('click', function(event) {
   generateColors(barSelection);
   const hexText = document.querySelector('#hexText');
   hexText.innerHTML = colorBar.currentKeyColor;
-  return colorBar.printHistory();
+  return colorBar.printColors();
 });
 colorBarBtn.addEventListener('click', function(event) {
   navigator.clipboard.writeText(getColorBarData());
@@ -59,7 +59,7 @@ function colorBarBtnEnable() {
 // Updates the color bar to add or remove current color
 function updateColorBar(event) {
   const colorOperation = event.target.classList.value;
-  colorOperation.includes('addHistory')
+  colorOperation.includes('addColorBtnJs')
     ? setSectionColor(event.target)
     : colorBar.removeColor();
 };
@@ -72,7 +72,7 @@ function setSectionColor(target) {
 
 // Contructor function for color bar functionality
 function ColorBar() {
-  this.historyList = [];
+  this.colorList = [];
   this.currentKeyColor = '#c8c8c8';
   this.currentSecondaryColor = '#c8c8c8';
   this.currentColorChart = {};
@@ -92,22 +92,22 @@ function ColorBar() {
   };
 
   this.addColor = function(color) {
-    if (this.historyList.includes(color)) return;
-    this.historyList = [...this.historyList, color];
+    if (this.colorList.includes(color)) return;
+    this.colorList = [...this.colorList, color];
     this.updateColorBar();
     colorBarBtnEnable();
   };
 
   this.removeColor = function() {
-    if (this.historyList.length) this.historyList.pop();
+    if (this.colorList.length) this.colorList.pop();
     this.updateColorBar();
     colorBarBtnEnable();
   };
 
   this.updateColorBar = function() {
     colorBarElem.innerHTML = '';
-    const historyList = [...this.historyList];
-    historyList.reverse().forEach(color => {
+    const colorList = [...this.colorList];
+    colorList.reverse().forEach(color => {
       const colorDiv = document.createElement('div');
       colorDiv.setAttribute('data', color);
       colorDiv.setAttribute('class', 'colorRibbon');
@@ -116,7 +116,7 @@ function ColorBar() {
     });
   };
 
-  this.printHistory = function() {
+  this.printColors = function() {
     const colorInput = document.querySelector('#colorInput');
     colorInput.value = this.currentKeyColor;
     applyPalette(this.currentPage);

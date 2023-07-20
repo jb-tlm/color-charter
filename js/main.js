@@ -38,7 +38,7 @@ secondaryForm.addEventListener('submit', function(event) {
   generateColors(colorBar.currentKeyColor);
   const secHexText = document.querySelector('#secHexText');
   secHexText.innerHTML = secondColor;
-  if (colorBar.historyList.includes(secondColor)) return;
+  if (colorBar.colorList.includes(secondColor)) return;
   colorBar.setCurrentKeyColor(secondColor);
 });
 
