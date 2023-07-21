@@ -16,13 +16,13 @@ colorForm.addEventListener('submit', function(event) {
   colorBtn.blur();
   const color = this.elements.colorInput.value;
   generateColors(color);
-  if (sessionHistory.currentPage === 'colorWheel') {
+  if (colorBar.currentPage === 'colorWheel') {
     updateUI('complementaryTab');
   } else {
-    applyPalette(sessionHistory.currentPage);
+    applyPalette(colorBar.currentPage);
   }
   const hexText = document.querySelector('#hexText');
-  hexText.innerHTML = sessionHistory.currentKeyColor;
+  hexText.innerHTML = colorBar.currentKeyColor;
 });
 
 colorForm.addEventListener('change', function() { colorBtn.focus(); });
@@ -32,14 +32,14 @@ secondaryForm.addEventListener('submit', function(event) {
   event.preventDefault();
   secondaryBtn.blur();
   const secondColor = this.elements.secondaryInput.value;
-  sessionHistory.setCurrentSecondaryColor(secondColor);
+  colorBar.setCurrentSecondaryColor(secondColor);
   document.querySelector('#keyGradients').innerHTML = '';
   document.querySelector('#secondaryGradients').innerHTML = '';
-  generateColors(sessionHistory.currentKeyColor);
+  generateColors(colorBar.currentKeyColor);
   const secHexText = document.querySelector('#secHexText');
   secHexText.innerHTML = secondColor;
-  if (sessionHistory.historyList.includes(secondColor)) return;
-  sessionHistory.setCurrentKeyColor(secondColor);
+  if (colorBar.colorList.includes(secondColor)) return;
+  colorBar.setCurrentKeyColor(secondColor);
 });
 
 secondaryForm.addEventListener('change', function() { secondaryBtn.focus(); });
@@ -47,9 +47,9 @@ secondaryForm.addEventListener('change', function() { secondaryBtn.focus(); });
 // Functionality for clipboard
 for (let ii of paletteCopy) {
   ii.addEventListener('click', function(ev) {
-    navigator.clipboard.writeText(sessionHistory.getCSSFormat(ev.target.dataset['combobox']));
+    navigator.clipboard.writeText(colorBar.getCSSFormat(ev.target.dataset['combobox']));
     const toast = document.querySelector('#clipboardToast');
-    toast.innerHTML = `Palettes for key color ${sessionHistory.currentKeyColor} have been saved to your clipboard`
+    toast.innerHTML = `Palettes for key color ${colorBar.currentKeyColor} have been saved to your clipboard`
     toast.setAttribute('class', 'toastSlideIn');
     return setTimeout(() => toast.setAttribute('class', 'toastSlideOut'), 3000);
   });
@@ -71,14 +71,14 @@ document.querySelector('body').addEventListener('click', function(ev) {
   const tgt = ev.target;
   if (tgt.classList.contains('colorSquare')) {
     const [_, __, r, g, b] = /(\((.+),(.+),(.+)\))/.exec(tgt.style.backgroundColor);
-    sessionHistory.addHistory(RGBtoHEX([Number(r), Number(g), Number(b)]));
+    colorBar.addColor(RGBtoHEX([Number(r), Number(g), Number(b)]));
   }
 });
 
 // Functionality for creating individual palettes
 function generateColors(input) {
   clearContainers();
-  sessionHistory.setCurrentKeyColor(input);
+  colorBar.setCurrentKeyColor(input);
   let colorData = {};
   colorData.complementary = setDesignPalette(input, [180], 'complementary');
   colorData.splitComplementary = setDesignPalette(input, [150, 210], 'splitComplementary');
@@ -90,9 +90,9 @@ function generateColors(input) {
   colorData.shades = setVariants(input, 'shades');
   colorData.warmGrays = setGrayshades(input, 'warm');
   colorData.coolGrays = setGrayshades(input, 'cool');
-  colorData.gradations = setGradations(input, sessionHistory.currentSecondaryColor);
-  sessionHistory.setCurrentColorChart(colorData);
-  return sessionHistory.setCSSFormat(createCSSFormat(input, colorData));
+  colorData.gradations = setGradations(input, colorBar.currentSecondaryColor);
+  colorBar.setCurrentColorChart(colorData);
+  return colorBar.setCSSFormat(createCSSFormat(input, colorData));
 };
 
 function clearContainers() {
