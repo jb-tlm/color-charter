@@ -127,6 +127,17 @@ function createContainers(colorArray, parentDiv, labelArray) {
     elParentDiv.appendChild(containerDiv);
     return formattedColor;
   });
+  const relInfoId = `${parentDiv}InfoId`;
+  if (!document.querySelector(`#${relInfoId}`)) {
+    const relInfoEl = document.createElement('div');
+    const info = colorData.reduce(
+      (lv, el) => el.infoFor === parentDiv ? el.description : lv,
+      ""
+    );
+    relInfoEl.id = relInfoId;
+    relInfoEl.innerHTML = info;
+    document.querySelector(`#${parentDiv}`).parentElement.appendChild(relInfoEl);
+  }
   return colorArray;
 };
 
