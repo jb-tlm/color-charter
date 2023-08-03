@@ -52,7 +52,7 @@ function getColorBarData() {
 }
 
 function colorBarBtnEnable() {
-  colorBarCB.style.visibility = 
+  colorBarCB.style.visibility =
     colorBarElem.childElementCount ? 'visible' : 'hidden';
 }
 
@@ -78,7 +78,7 @@ function ColorBar() {
   this.currentColorChart = {};
   this.currentPage = 'colorWheel';
   this.cssFormat = '';
-  
+
   this.setCurrentKeyColor = function(color) {
     this.currentKeyColor = color;
   };
@@ -128,8 +128,8 @@ function ColorBar() {
   };
 
   this.getCSSFormat = function(type) {
-    return this.cssFormat.header + 
-           this.cssFormat[type] + 
+    return this.cssFormat.header +
+           this.cssFormat[type] +
            this.cssFormat.footer;
   };
 
@@ -232,6 +232,7 @@ const paletteTypes = {
 const colorData = [
   {
     name: 'colorWheel',
+    infoFor: null,
     elementList: false,
     description: `
       <div class="colorInfo">
@@ -250,6 +251,7 @@ const colorData = [
   },
   {
     name: 'complementary',
+    infoFor: 'complementary',
     elementList: paletteTypes.twoColor,
     description: `
       <div class="colorInfo">
@@ -260,6 +262,7 @@ const colorData = [
   },
   {
     name: 'splitComplementary',
+    infoFor: 'splitComplementary',
     elementList: paletteTypes.threeColor,
     description: `
       <div class="colorInfo">
@@ -270,6 +273,7 @@ const colorData = [
   },
   {
     name: 'analogous',
+    infoFor: 'analogous',
     elementList: paletteTypes.threeColor,
     description: `
       <div class="colorInfo">
@@ -280,6 +284,7 @@ const colorData = [
   },
   {
     name: 'triad',
+    infoFor: 'triad',
     elementList: paletteTypes.threeColor,
     description: `
       <div class="colorInfo">
@@ -290,6 +295,7 @@ const colorData = [
   },
   {
     name: 'tetrad',
+    infoFor: 'tetrad',
     elementList: paletteTypes.fourColor,
     description: `
       <div class="colorInfo">
@@ -300,6 +306,7 @@ const colorData = [
   },
   {
     name: 'monochrome',
+    infoFor: 'monochrome',
     elementList: paletteTypes.fourColor,
     description: `
       <div class="colorInfo">
@@ -310,6 +317,7 @@ const colorData = [
   },
   {
     name: 'tintShade',
+    infoFor: 'shades',
     elementList: false,
     description: `
       <div class="colorInfo">
@@ -320,6 +328,7 @@ const colorData = [
   },
   {
     name: 'grayscale',
+    infoFor: 'coolGrayscales',
     elementList: false,
     description: `
       <div class="colorInfo">
@@ -330,6 +339,7 @@ const colorData = [
   },
   {
     name: 'secondary',
+    infoFor: 'secondaryGradients',
     elementList: false,
     description: `
       <div class="colorInfo">
@@ -481,12 +491,12 @@ function changePage(selection) {
 };
 
 // Sets menu state based on screen width
-function setMenuToggle() { 
+function setMenuToggle() {
   if (window.innerWidth < 857) {
  body.classList.remove("body")
   } else {
-  body.setAttribute("class", "body");  
-   
+  body.setAttribute("class", "body");
+
 pageMenu.setAttribute("class", "menuSlideDown");
   }
   if (window.innerWidth < 1020) {

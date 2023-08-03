@@ -26,7 +26,7 @@ body::-webkit-scrollbar {
   border:none;
   width: 0;
   background: rgba(0,0,0,0);
-} 
+}
 
 h1 {
   display: inline-block;
@@ -566,8 +566,7 @@ footer {
 }
 
 .colorInfo {
-  margin: 25vh auto;
-  width: 60vw;
+  margin: 3vh auto;
   padding: 20px;
   background: rgb(0, 0, 0, .9);
   border: 3px double gray;
@@ -633,10 +632,9 @@ footer {
 @media screen and (max-width: 857px) {
   :root { font-size: .75rem; }
   #content,
-  .colorList,
-  .colorInfo {
+  .colorList {
     width: 70vw;
-  } 
+  }
 }
 
 @media screen and (max-height: 857px) {
@@ -651,4 +649,3 @@ footer {
 @media screen and (max-height: 600px) {
   :root { font-size: .5rem; }
 }
-
