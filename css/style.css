@@ -292,7 +292,7 @@ input:hover, #colorBtn:hover, #secondaryBtn:hover {
 #content {
   text-align: left;
   width: 50vw;
-  margin: 20px 0 0 0;
+  margin: 20px 0;
   padding: 20px 20px 20px 20px;
   border: none;
   border: 3px double darkgray;
@@ -509,7 +509,7 @@ canvas {
 ===================================*/
 
 footer {
-  position: fixed;
+  position: sticky;
   bottom: 0;
   flex-direction: row;
   justify-content: space-between;
