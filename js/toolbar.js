@@ -520,7 +520,7 @@ window.onresize = setMenuToggle;
 //===================================
 
 const infoPanel = document.querySelector('#infoPanel');
-const infoBlock = document.querySelector('#infoBlock');
+const infoBtn = document.querySelector('#infoBtn');
 
 infoPanel.addEventListener('click', function() {
   infoPanel.setAttribute('class', 'panelFadeOut');
@@ -536,8 +536,7 @@ infoPanel.addEventListener('click', function() {
   infoPanel.style.display = 'none'
 })();
 
-infoBlock.addEventListener('click', function(event) {
-  if (event.target.id.includes('Block')) return;
+infoBtn.addEventListener('click', function(event) {
   const selection = event.target.id;
   if (!selection.includes('Btn')) return;
   if (window.innerWidth < 300) {

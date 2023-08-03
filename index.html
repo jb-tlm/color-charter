@@ -18,8 +18,11 @@
         <h1>Color Charter&nbsp;<i class="fas fa-chart-bar"></i></h1>
         <h6 id="logoByline">Design Color Palette Tool</h6>
       </div>
-      <div id="menuBtn">
+      <div id="menuBtn" style="display: none;">
         <span class="menuBtnBars fas fa-bars"></span>
+      </div>
+      <div id="infoBtn">
+        <h5 id="colorWheelBtn">i</h5>
       </div>
     </div>
     <div id="colorBarContainer">
@@ -29,7 +32,7 @@
           <h6 class="clipboardTooltip tooltipLeave">copy</h6>
         </button>
         <button class="btn fas fa-times colorBarBtnStyle removeColorBtnJs"></button>
-      </div>      
+      </div>
     </div>
   </header>
 
@@ -78,7 +81,7 @@
           <canvas id="colorWheelCanvas" width="100" height="100"></canvas>
         </div>
       </div>
-      
+
     </div>
   </div>
 
@@ -89,7 +92,7 @@
         <h2>Complementary</h2>
         <button class="btn fas fa-clipboard copyPaletteBtn" data-combobox="complementary">
           <h6 class="clipboardTooltip tooltipLeave">copy</h6>
-        </button>    
+        </button>
       </div>
       <div class="colorRow" id="complementary"></div>
     </div>
@@ -102,7 +105,7 @@
         <h2>Split Complementary</h2>
         <button class="btn fas fa-clipboard copyPaletteBtn" data-combobox="split">
           <h6 class="clipboardTooltip tooltipLeave">copy</h6>
-        </button>    
+        </button>
       </div>
       <div class="colorRow" id="splitComplementary"></div>
     </div>
@@ -115,7 +118,7 @@
         <h2>Analogous</h2>
         <button class="btn fas fa-clipboard copyPaletteBtn" data-combobox="analogous">
           <h6 class="clipboardTooltip tooltipLeave">copy</h6>
-        </button>    
+        </button>
       </div>
       <div class="colorRow" id="analogous"></div>
     </div>
@@ -128,7 +131,7 @@
         <h2>Triads</h2>
         <button class="btn fas fa-clipboard copyPaletteBtn" data-combobox="triads">
           <h6 class="clipboardTooltip tooltipLeave">copy</h6>
-        </button>    
+        </button>
       </div>
       <div class="colorRow" id="triad"></div>
     </div>
@@ -141,7 +144,7 @@
         <h2>Tetrads</h2>
         <button class="btn fas fa-clipboard copyPaletteBtn" data-combobox="tetrads">
           <h6 class="clipboardTooltip tooltipLeave">copy</h6>
-        </button>    
+        </button>
       </div>
       <div class="colorRow" id="tetrad"></div>
     </div>
@@ -154,7 +157,7 @@
         <h2>Monochromes</h2>
         <button class="btn fas fa-clipboard copyPaletteBtn" data-combobox="monochrome">
           <h6 class="clipboardTooltip tooltipLeave">copy</h6>
-        </button>    
+        </button>
       </div>
       <div class="colorRow" id="monochrome"></div>
     </div>
@@ -167,7 +170,7 @@
         <h2>Tints</h2>
         <button class="btn fas fa-clipboard copyPaletteBtn" data-combobox="tints">
           <h6 class="clipboardTooltip tooltipLeave">copy</h6>
-        </button>    
+        </button>
       </div>
       <div class="colorRow" id="tints"></div>
     </div>
@@ -176,7 +179,7 @@
         <h2>Shades</h2>
         <button class="btn fas fa-clipboard copyPaletteBtn" data-combobox="shades">
           <h6 class="clipboardTooltip tooltipLeave">copy</h6>
-        </button>    
+        </button>
       </div>
       <div class="colorRow" id="shades"></div>
     </div>
@@ -256,13 +259,10 @@
 
   <!--Info panel-->
   <div id="infoPanel" class="panelFadeOut"><!-- Palette information prints here --></div>
-  
+
   <!--Footer-->
   <footer id="infoBlock">
     <h5 id="authorBlock">😼&nbsp;Designed by Bobcat 2022</h5>
-    <div id="infoBtn">
-      <h5 id="colorWheelBtn">i</h5>
-    </div>
   </footer>
 
   <script src="./js/toolbar.js"></script>
