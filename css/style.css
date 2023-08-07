@@ -524,7 +524,7 @@ footer {
   align-items: center;
   width: 2rem;
   height: 2rem;
-  margin: 0 1rem 1.25rem 0;
+  margin: 1rem 1rem 1.25rem 0;
   color: lightgray;
   background: black;
   border: 2px solid lightgray;
@@ -533,6 +533,7 @@ footer {
   font-family: 'Times New Roman', Times, serif;
   border-radius: 50%;
   transition: all .15s ease-in-out;
+  float: right;
 }
 
 #infoBtn:hover {
