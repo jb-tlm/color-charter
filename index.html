@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Color Charter</title>
-  <link rel="stylesheet" href="https://cdn.tlm.cloud/fontawesome/5.15.2/css/all.css" integrity="sha384-+ioeoxQvfPYLCoZqU6XvHE+J8Wb3CogZo13PwI1Ptkv/fkzdPKA5nGUGMuzkS2Y9" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.tlm.cloud/fontawesome/5.15.2/css/all.css"
+    integrity="sha384-+ioeoxQvfPYLCoZqU6XvHE+J8Wb3CogZo13PwI1Ptkv/fkzdPKA5nGUGMuzkS2Y9" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
   <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body id="body">
 
   <!--Header-->
@@ -29,27 +32,66 @@
       <div id="colorBar"><!-- Color bar prints here --></div>
       <div id="colorBarCB">
         <button id="colorBarBtn" class="btn fas fa-copy colorBarBtnStyle" data-combobox="complementary">
-          <h6 class="clipboardTooltip tooltipLeave">copy</h6>
+          <h6 class="clipboardTooltip tooltipLeave">Copy</h6>
         </button>
-        <button class="btn fas fa-times colorBarBtnStyle removeColorBtnJs"></button>
+        <button class="btn fas fa-times colorBarBtnStyle removeColorBtnJs">
+        </button>
       </div>
     </div>
   </header>
 
   <!--Menu Button-->
   <menu id="pageMenu">
-    <h2>Color Relationships</h2><hr>
-    <h3 id="complementaryTab">Complementary</h3><hr>
-    <h3 id="splitComplementaryTab">Split Complementary</h3><hr>
-    <h3 id="analogousTab">Analogous</h3><hr>
-    <h3 id="triadTab">Triads</h3><hr>
-    <h3 id="tetradTab">Tetrads</h3><hr>
-    <h3 id="monochromeTab">Monochromes</h3><hr>
-    <h2>Additional Features</h2><hr>
-    <h3 id="secondaryTab">Secondary Color</h3><hr>
-    <h2>Accents</h2><hr>
-    <h3 id="tintShadeTab">Tints and Shades</h3><hr>
-    <h3 id="grayscaleTab">Grayscales</h3>
+    <h2>Color Relationships</h2>
+    <hr>
+    <div class="tooltip">
+      <h3 id="complementaryTab">Complementary</h3>
+      <span class="tooltipText left">Show Complementary Colors</span>
+    </div>
+    <hr>
+    <div class="tooltip">
+      <h3 id="splitComplementaryTab">Split Complementary</h3>
+      <span class="tooltipText left">Show Split Complementary Colors</span>
+    </div>
+    <hr>
+    <div class="tooltip">
+      <h3 id="analogousTab">Analogous</h3>
+      <span class="tooltipText left">Show Analogous Colors</span>
+    </div>
+    <hr>
+    <div class="tooltip">
+      <h3 id="triadTab">Triads</h3>
+      <span class="tooltipText left">Show Triad Colors</span>
+    </div>
+    <hr>
+    <div class="tooltip">
+      <h3 id="tetradTab">Tetrads</h3>
+      <span class="tooltipText left">Show Tetrad Colors</span>
+    </div>
+    <hr>
+    <div class="tooltip">
+      <h3 id="monochromeTab">Monochromes</h3>
+      <span class="tooltipText left">Show Monochromatic Colors</span>
+    </div>
+    <hr>
+    <h2>Additional Features</h2>
+    <hr>
+    <div class="tooltip">
+      <h3 id="secondaryTab">Secondary Color</h3>
+      <span class="tooltipText left">Add Secondary Color</span>
+    </div>
+    <hr>
+    <h2>Accents</h2>
+    <hr>
+    <div class="tooltip">
+      <h3 id="tintShadeTab">Tints and Shades</h3>
+      <span class="tooltipText left">Show Tints and Shades</span>
+    </div>
+    <hr>
+    <div class="tooltip">
+      <h3 id="grayscaleTab">Grayscales</h3>
+      <span class="tooltipText left">Show Grayscales</span>
+    </div>
   </menu>
 
   <!--Form-->
@@ -59,9 +101,18 @@
       <button type="button" class="btn addColorBtnJs">Add to Palette</button>
     </div>
     <fieldset>
-      <input type="color" id="colorInput" name="colorInput" autofocus="autofocus">
-      <button type="submit" id="colorBtn"><h1 class="fas fa-palette icon colorPalette"></h1></button>
+      <div class="tooltip">
+        <input type="color" id="colorInput" name="colorInput" autofocus="autofocus">
+        <span class="tooltipText">Select Color</span>
+      </div>
+      <div class="tooltip">
+        <button type="submit" id="colorBtn">
+          <span class="tooltipText">Generate Palette</span>
+          <h1 class="fas fa-palette icon colorPalette"></h1>
+        </button>
+      </div>
     </fieldset>
+
   </form>
 
   <!--How To Use page page-->
@@ -69,12 +120,25 @@
     <div class="colorList" id="colorWheel">
       <div>
         <h2>How to use Color Charter</h2>
-          <h3 class="colorWheelText">With the click of a couple of buttons, a palette can be selected and then demonstrated. Either pick a color from the color input or enter a hex, rgb, or hsl value into it, then click the <span class="colorWheelIcon fas fa-palette icon"></span> button. Color Charter will generate a variety of color palettes and related color data automatically. Any of the 6 palettes can be demonstrated by selecting them from the menu. To include a key color in the Palette Bar, you can either click the <span class="colorWheelIcon">Add</span> button or select any of the color blocks that appear. If you want to remove a color from the Palette Bar, simply click the <span class="fas fa-times colorWheelIcon"></span> button that appears beside the Palette Bar. The colors will be removed in the opposite order in which they were added.
-          </h3>
-          <h3 class="colorWheelText">Click the <span class="colorWheelIcon fas fa-copy icon"></span> button to copy all palettes of the current key color setting. The copy will be in style declaration block format and is ready to be pasted directly into a CSS file.
-          </h3>
+        <h3 class="colorWheelText">With the click of a couple of buttons, a palette can be selected and then
+          demonstrated. Either pick a color from the color input or enter a hex, rgb, or hsl value into it, then click
+          the <span class="colorWheelIcon fas fa-palette icon"></span> button. Color Charter will generate a variety of
+          color palettes and related color data automatically. Any of the 6 palettes can be demonstrated by selecting
+          them from the menu. To include a key color in the Palette Bar, you can either click the <span
+            class="colorWheelIcon">Add</span> button or select any of the color blocks that appear. If you want to
+          remove a color from the Palette Bar, simply click the <span class="fas fa-times colorWheelIcon"></span> button
+          that appears beside the Palette Bar. The colors will be removed in the opposite order in which they were
+          added.
+        </h3>
+        <h3 class="colorWheelText">Click the <span class="colorWheelIcon fas fa-copy icon"></span> button to copy all
+          palettes of the current key color setting. The copy will be in style declaration block format and is ready to
+          be pasted directly into a CSS file.
+        </h3>
         <div class="wheelContainer">
-          <h3 class="colorWheelText">The color wheel used by Color Charter is based on the RGB color model, which uses an additive process. This means the palettes generated by Color Charter are determined by 30&deg; intervals. So, for example, if red (rgb(255, 0, 0)) is the key color, cyan will be the complementary and the analogous colors wil be orange and fuchsia.</h3>
+          <h3 class="colorWheelText">The color wheel used by Color Charter is based on the RGB color model, which uses
+            an additive process. This means the palettes generated by Color Charter are determined by 30&deg; intervals.
+            So, for example, if red (rgb(255, 0, 0)) is the key color, cyan will be the complementary and the analogous
+            colors wil be orange and fuchsia.</h3>
           <canvas id="colorWheelCanvas" width="100" height="100"></canvas>
         </div>
       </div>
@@ -88,7 +152,7 @@
       <div>
         <h2>Complementary</h2>
         <button class="btn fas fa-copy copyPaletteBtn" data-combobox="complementary">
-          <h6 class="clipboardTooltip tooltipLeave">copy</h6>
+          <h6 class="clipboardTooltip tooltipLeave">Copy</h6>
         </button>
       </div>
       <div class="colorRow" id="complementary"></div>
@@ -212,8 +276,10 @@
         <button type="button" class="btn addColorBtnJs">Add to Palette</button>
       </div>
       <fieldset>
-        <input type="color" id="secondaryInput" name="secondaryInput" autofocus="autofocus"/>
-        <button type="submit" id="secondaryBtn"><h1 class="fas fa-palette icon colorPalette"></h1></button>
+        <input type="color" id="secondaryInput" name="secondaryInput" autofocus="autofocus" />
+        <button type="submit" id="secondaryBtn">
+          <h1 class="fas fa-palette icon colorPalette"></h1>
+        </button>
       </fieldset>
     </form>
     <div class="colorList">
@@ -239,12 +305,18 @@
   <!--Content sections-->
   <div class="colorList" id="content">
     <section id="contrast">
-      <h3 class="whiteAsideText">An example of white text on your key</h3><hr/>
-      <h3 class="blackAsideText">An example of black text on your key</h3><hr/>
-      <h3 id="blackAsideShadow" class="whiteAsideText">An example of black text shadow on your key</h3><hr/>
-      <h3 id="whiteAsideShadow" class="blackAsideText">An example of white text shadow on your key</h3><hr/>
-      <h3 id="secondBgKeyText">An example of the key color text on a color from your palette</h3><hr/>
-      <h3 id="keyBgSecondText">An example of text using a color from your palette</h3><hr/>
+      <h3 class="whiteAsideText">An example of white text on your key</h3>
+      <hr />
+      <h3 class="blackAsideText">An example of black text on your key</h3>
+      <hr />
+      <h3 id="blackAsideShadow" class="whiteAsideText">An example of black text shadow on your key</h3>
+      <hr />
+      <h3 id="whiteAsideShadow" class="blackAsideText">An example of white text shadow on your key</h3>
+      <hr />
+      <h3 id="secondBgKeyText">An example of the key color text on a color from your palette</h3>
+      <hr />
+      <h3 id="keyBgSecondText">An example of text using a color from your palette</h3>
+      <hr />
     </section>
   </div>
 
@@ -262,4 +334,5 @@
   <script src="./js/toolbar.js"></script>
   <script src="./js/main.js"></script>
 </body>
+
 </html>
