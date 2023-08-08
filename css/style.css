@@ -157,12 +157,12 @@ header {
   font-size: .9rem;
 }
 
-#pageMenu>h3 {
+.tooltip>h3 {
   margin: .3rem 0;
   font-size: .9rem;
 }
 
-#pageMenu>h3:hover {
+.tooltip>h3:hover {
   color: gray;
   cursor: pointer;
 }
@@ -458,19 +458,20 @@ canvas {
 
 .clipboardTooltip {
   position: absolute;
-  margin-top: -2.5rem;
-  padding: 1px 5px 3px 5px;
+  margin-top: -2.7rem;
+  padding: 5px 5px;
   border-radius: 3px;
   background-color: rgb(0, 0, 0, .8);
   color: white;
   font-family: Tahoma, Verdana, sans-serif;
-  font-size: 10px;
+  font-size: 13px;
   font-weight: normal;
+  z-index: 99;
 }
 
 .tooltipEnter {
   opacity: 1;
-  transition: opacity .25s 1s ease-in;
+  transition: opacity .25s ease-in;
 }
 
 .tooltipLeave {
@@ -503,6 +504,71 @@ canvas {
   transform: translateX(100vw);
   animation: .5s ease-out slideFadeOut;
 }
+
+/*===================================
+========= TOOLTIPS
+===================================*/
+
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  }
+  
+  
+  .tooltip span {
+  font-size:medium;
+  padding: 12px 12px;
+  color: rgb(102, 102, 102);
+  }
+  
+  
+  .tooltip .tooltipText {
+  visibility: hidden;
+  width: 120%;
+  background-color: #242020;
+  color: #fff;
+  text-align: center;
+  padding: 6px 6px;
+  border-radius: 6px;
+  
+  
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  
+  
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+  }
+  
+  
+  /* Position adjustments for tooltip on the left */
+  .tooltip .tooltipText.left {
+  bottom: .01rem;
+  right: 255%;
+  left: -100%
+  /* margin-right: 3rem; */
+  }
+  
+  
+  /* Position adjustments for tooltip below */
+  .tooltip .tooltipText.below {
+  bottom: -4rem;
+  left: 15%;
+  margin-left: -60px;
+  }
+  
+  
+  .tooltip:hover .tooltipText {
+  visibility: visible;
+  opacity: 1;
+  }
 
 /*===================================
 ========= FOOTER
