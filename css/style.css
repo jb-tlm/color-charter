@@ -575,11 +575,12 @@ canvas {
 ===================================*/
 
 footer {
-  position: sticky;
+  position: fixed;
   bottom: 0;
+  width: 100%;
   flex-direction: row;
   justify-content: space-between;
-  height: 80px;
+  height: 16px;
 }
 
 #infoBtn {
@@ -610,11 +611,10 @@ footer {
 }
 
 #authorBlock {
-  align-self: flex-end;
-  display: inline;
-  margin: 0 0 .5rem .5rem;
-  opacity: .75;
-  color: dimgray;
+  display: inline-block;
+  margin: 0 .8rem 0 46%;
+  /* opacity: .75; */
+  color: white;
   font-size: .7rem;
   font-weight: normal;
 }
